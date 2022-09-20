@@ -1,0 +1,55 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-linux",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "linux-amd64"
+            ],
+            "problemMatcher": [
+                "$go"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build-linux-router",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "linux-mipsle-softfloat"
+            ],
+            "problemMatcher": [
+                "$go"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build-darwin",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "darwin-amd64"
+            ],
+            "problemMatcher": [
+                "$go"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build-windows",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "windows-amd64"
+            ],
+            "problemMatcher": [
+                "$go"
+            ],
+            "group": "build"
+        }
+    ]
+}
