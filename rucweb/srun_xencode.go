@@ -37,8 +37,9 @@ func GetxEncode(msg, key string) string {
 	}
 	pwd := sencode(msg, true)
 	pwdk := sencode(key, false)
-	if len(pwdk) < 4 {
-		for i := 0; i < 4-len(pwdk); i++ {
+	pwdklen := len(pwdk)
+	if pwdklen < 4 {
+		for i := 0; i < 4-pwdklen; i++ {
 			pwdk = append(pwdk, 0)
 		}
 	}

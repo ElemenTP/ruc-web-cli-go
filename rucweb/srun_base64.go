@@ -5,8 +5,8 @@ import (
 	"fmt"
 )
 
-const _PADCHAR = '='
-const _ALPHA = "LVoJPiCN2R8G90yg+hmFHuacZ1OWMnrsSTXkYpUq/3dlbfKwv6xztjI7DeBE45QA"
+const _PADCHAR rune = '='
+const _ALPHA string = "LVoJPiCN2R8G90yg+hmFHuacZ1OWMnrsSTXkYpUq/3dlbfKwv6xztjI7DeBE45QA"
 
 func getByte(str string, index int) int {
 	return int(str[index])
