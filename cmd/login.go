@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+	"ruc-web-cli/rucweb"
 
 	"github.com/spf13/cobra"
 )
@@ -41,9 +42,9 @@ or "ruc-web-cli login", which will use local secrets.json to login.`,
 			}
 			for k, v := range j {
 				if k == "username" {
-					username = Convert2String(v)
+					username = v.(string)
 				} else if k == "password" {
-					password = Convert2String(v)
+					password = v.(string)
 				} else {
 					continue
 				}
@@ -53,6 +54,7 @@ or "ruc-web-cli login", which will use local secrets.json to login.`,
 		if len(username) == 0 || len(password) == 0 {
 			log.Fatal("username or password is empty")
 		}
+		rucweb.Login(username, password)
 	},
 }
 
@@ -60,17 +62,7 @@ func init() {
 	rootCmd.AddCommand(loginCmd)
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	loginCmd.Flags().StringVarP(&username, "username", "u", "", "username of your campus network account")
-	loginCmd.Flags().StringVarP(&password, "password", "p", "", "password of your campus network account")
-	loginCmd.Flags().StringVarP(&secrets, "secrets", "s", "secrets.json", "path of a json file contains your username and password")
-}
-
-func Convert2String(v interface{}) string {
-	switch record := v.(type) {
-	case string:
-		return record
-	default:
-		log.Fatalln("username and password in json file should be string")
-		return ""
-	}
+	loginCmd.Flags().StringVarP(&username, "username", "u", "", "Username to login, typically your student id")
+	loginCmd.Flags().StringVarP(&password, "password", "p", "", "Password to login, typically your password for https://v.ruc.edu.cn")
+	loginCmd.Flags().StringVarP(&secrets, "secrets", "s", "secrets.json", "Should be a json file with `username` and `password` inside, values are string")
 }
