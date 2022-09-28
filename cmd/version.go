@@ -21,7 +21,7 @@ var versionCmd = &cobra.Command{
 	Short: "Show the version of ruc-web-cli",
 	Args:  cobra.NoArgs,
 	Run: func(_ *cobra.Command, _ []string) {
-		fmt.Printf("msga %s %s %s with %s %s\n", Version, runtime.GOOS, runtime.GOARCH, runtime.Version(), BuildTime)
+		fmt.Printf("ruc-web-cli %s %s %s with %s %s\n", Version, runtime.GOOS, runtime.GOARCH, runtime.Version(), BuildTime)
 	},
 }
 
